@@ -3,6 +3,13 @@
 A Flutter plugin to dismiss notifications in Android and iOS. 
 
 ## How to use the plugin
+In the pubspec.yaml of your flutter project, add the following dependency:
+
+```dart
+    dependencies :
+      clear_notification_tray: latest_version_number
+```
+
 The `clear` method can be called  to clear all the notifications received by your app.<br />
 Upon receiving the push notifications, iOS applications display a red badge with notification count inside. It also dismisses this badge count.<br />
 
