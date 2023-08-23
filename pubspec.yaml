@@ -2,6 +2,10 @@ name: clear_notification_tray
 description: A plugin to clear notification tray in flutter.
 version: 0.0.1
 homepage: https://github.com/NischalJoshi777/clear_notification_tray
+issue_tracker: https://github.com/NischalJoshi777/clear_notification_tray/issues
+platforms:
+  android:
+  ios:
 
 environment:
   sdk: '>=2.19.6 <3.0.0'
