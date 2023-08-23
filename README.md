@@ -24,10 +24,10 @@ void main() {
 ```
 
 ## iOS compatibility
-This plugin is only compatible for clearing notifications in iOS devices running with iOS version `10.0` or above.<br />
-The methods will return a PlatformException for iOS version less than `10.0` without dismissing notifications.<br />
-The plugin uses `UNUserNotificationCenter API` to clear notification and reset the badge number on the app icon that was introduced in iOS version 10.0.<br />
-Before iOS 10.0, there wasn't a  standardized way to programmatically clear notifications or reset the badge number.<br />
+This plugin is only compatible for clearing notifications in iOS devices running with iOS version `10.0` or above.
+The methods will return a PlatformException for iOS version less than `10.0` without dismissing notifications.
+The plugin uses `UNUserNotificationCenter API` to clear notification and reset the badge number on the app icon that was introduced in iOS version 10.0.
+Before iOS 10.0, there wasn't a  standardized way to programmatically clear notifications or reset the badge number.
 
 
 

@@ -1,11 +1,12 @@
 name: clear_notification_tray
-description: A plugin to clear notification tray in flutter.
-version: 0.0.1
+description: A plugin to clear notification tray in both android and iOS and reset the iOS badge count.
+version: 0.0.2
 homepage: https://github.com/NischalJoshi777/clear_notification_tray
 issue_tracker: https://github.com/NischalJoshi777/clear_notification_tray/issues
 platforms:
   android:
   ios:
+
 
 environment:
   sdk: '>=2.19.6 <3.0.0'
@@ -14,7 +15,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  plugin_platform_interface: ^2.0.2
 
 dev_dependencies:
   flutter_test:

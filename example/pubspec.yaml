@@ -1,5 +1,5 @@
 name: clear_notification_tray_example
-description: A flutter plugin to clear notifications in both android and iOS.
+description: A flutter plugin to clear notifications in both android and iOS natively.
 version: 0.0.1
 
 # The following line prevents the package from being accidentally published to

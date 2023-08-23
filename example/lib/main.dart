@@ -25,10 +25,9 @@ class _MyAppState extends State<MyApp> {
         appBar: AppBar(
           title: const Text('Plugin example for clearing notifications'),
         ),
-        body:  Center(
+        body: Center(
           child: ElevatedButton(
-            onPressed: () =>
-              ClearNotificationTray.clear(),
+            onPressed: () => ClearNotificationTray.clear(),
             child: const Text(
               'Clear All Notifications',
             ),
