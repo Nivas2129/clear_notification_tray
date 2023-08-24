@@ -1,5 +1,7 @@
 package com.clear_notification_tray.clear_notification_tray
 
+import android.content.Context
+import android.app.NotificationManager
 import androidx.annotation.NonNull
 
 import io.flutter.embedding.engine.plugins.FlutterPlugin
@@ -43,7 +45,8 @@ class ClearNotificationTrayPlugin: FlutterPlugin, MethodCallHandler {
       notificationManager.cancelAll()
       result.success(true)
     } catch (e: Exception) {
-      result.error("Cannot clear the notification tray", e.getMessage(), e)
+      result.error("Cannot clear the notification tray", e.message, e)
     }
   }
 }
+

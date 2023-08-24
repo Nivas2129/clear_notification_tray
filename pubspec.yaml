@@ -1,6 +1,6 @@
 name: clear_notification_tray
 description: A plugin to clear notification tray in both android and iOS and reset the iOS badge count.
-version: 0.0.2
+version: 0.0.3
 homepage: https://github.com/NischalJoshi777/clear_notification_tray
 issue_tracker: https://github.com/NischalJoshi777/clear_notification_tray/issues
 platforms:
