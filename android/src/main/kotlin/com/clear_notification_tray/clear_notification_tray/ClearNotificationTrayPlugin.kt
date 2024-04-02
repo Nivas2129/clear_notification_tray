@@ -29,6 +29,7 @@ class ClearNotificationTrayPlugin: FlutterPlugin, MethodCallHandler {
   override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
     when (call.method) {
       "clear" -> channelMethodClearAllNotifications(result)
+      "clearByTag" -> channelMethodClearNotificationByTag(call, result)
       else -> result.notImplemented()
     }
   }
@@ -48,5 +49,33 @@ class ClearNotificationTrayPlugin: FlutterPlugin, MethodCallHandler {
       result.error("Cannot clear the notification tray", e.message, e)
     }
   }
+
+  private fun channelMethodClearNotificationByTag(@NonNull call: MethodCall, @NonNull result: Result) {
+    try {
+        val tagToCancel = call.argument<String>("tag")
+
+        if (tagToCancel != null) {
+            val notificationManager: NotificationManager =
+                    context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+
+            val activeNotifications = notificationManager.activeNotifications
+
+            for (notification in activeNotifications) {
+                val id = notification.id
+                val tag = notification.tag ?: "null"
+
+                if (tag == tagToCancel) {
+                    notificationManager.cancel(tag, id)
+                }
+            }
+
+            result.success(true)
+        } else {
+            result.error("Invalid Arguments", "Tag argument is missing or null", null)
+        }
+    } catch (e: Exception) {
+        result.error("Cannot clear the notification tray", e.message, e)
+    }
+}
 }
 

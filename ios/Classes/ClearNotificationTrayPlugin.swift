@@ -8,11 +8,14 @@ public class ClearNotificationTrayPlugin: NSObject, FlutterPlugin {
         registrar.addMethodCallDelegate(instance, channel: channel)
     }
     
-    public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
-        if call.method == "clear" {
-            channelMethodClearAllNotifications(result: result)
-        } else {
-            result(FlutterMethodNotImplemented)
+    public func handle(call: FlutterMethodCall, result: @escaping FlutterResult) {
+        switch call.method {
+            case "clear":
+                channelMethodClearAllNotifications(result: result)
+            case "clearByTag":
+                channelMethodClearNotificationByTag(call: call, result: result)
+            default:
+                result(FlutterMethodNotImplemented)
         }
     }
     
@@ -21,6 +24,23 @@ public class ClearNotificationTrayPlugin: NSObject, FlutterPlugin {
             UIApplication.shared.applicationIconBadgeNumber = 0
             let center = UNUserNotificationCenter.current()
             center.removeAllDeliveredNotifications()
+            result(nil) // Success, so returns nil
+        } else {
+            let currentVersion: [String: Any] = [
+                "iosVersion": UIDevice.current.systemVersion
+            ]
+            let error = FlutterError(code: "UNSUPPORTED_VERSION", message: "Clearing notifications is only supported on iOS 10.0 and later", details: currentVersion)
+            result(error) // Returns error for unsupported version
+        }
+    }
+
+    private func channelMethodClearNotificationByTag(call: FlutterMethodCall, result: @escaping FlutterResult) {
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.applicationIconBadgeNumber = 0
+            let center = UNUserNotificationCenter.current()
+            let args = call.arguments as! Dictionary<String, String>
+            let tag = args["tag"]! as String
+            center.removeDeliveredNotifications(withIdentifiers: [])
             result(nil) // Success, so returns nil
         } else {
             let currentVersion: [String: Any] = [

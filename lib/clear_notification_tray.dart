@@ -20,9 +20,19 @@ class ClearNotificationTray {
       throw ClearNotificationTrayException(message: e.toString());
     }
   }
+
+  static Future<void> clearByTag(String id) async {
+    try {
+      await _channel.invokeMethod(
+          NotificationTrayConstants.clearOneMethodName, {'tag': id});
+    } catch (e) {
+      throw ClearNotificationTrayException(message: e.toString());
+    }
+  }
 }
 
 class NotificationTrayConstants {
   static const channelName = 'notificationTrayChannel';
   static const methodName = 'clear';
+  static const clearOneMethodName = 'clearByTag';
 }
